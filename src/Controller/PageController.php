@@ -11,7 +11,7 @@ class PageController
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      *
      * je créé une route, en utilisant des commentaires PHP
      * et "@Route" pour spécifier l'url de la page que je veux créer
@@ -25,6 +25,14 @@ class PageController
         // Ca affichera donc 'hello accueil' quand
         // l'url "/" sera demandée
         return new Response('Hello Accueil');
+    }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact()
+    {
+        return new Response('contact');
     }
 
 }
