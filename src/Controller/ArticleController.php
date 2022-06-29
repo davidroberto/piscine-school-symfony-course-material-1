@@ -36,6 +36,13 @@ class ArticleController
         // récupérer l'id dans l'url (parametre GET)
         $id = $request->query->get('id');
 
+//        $ids = $request->query->get('id');
+//        $titles = "";
+//        foreach ($ids as $id) {
+//            $titles .= " | " . $articles[$id]['title'];
+//        }
+//        return new Response($titles);
+        
         // trouver dans la liste des articles l'article qui correspond à l'id récupéré
         $article = $articles[$id];
 
