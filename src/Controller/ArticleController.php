@@ -2,7 +2,7 @@
 
 
 namespace App\Controller;
-
+// src/Controller
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,7 +50,9 @@ class ArticleController
         return new Response($article['title']);
     }
 
-
+    // pour débuguer ses routes en utilisant la ligne de commandes :
+    // se placer dans le projet en ligne de commandes
+    //  et taper "php bin/console debug:router"
 
     /**
      * @Route("/article/{id}", name="article_show_wildcard")
@@ -74,7 +76,7 @@ class ArticleController
                 'content' => 'BROUM'
             ],
             3 => [
-                'title' => "L'alcool c'est pas cool",
+                'title' => "L'alcool c'est pas cool ?!",
                 'content' => "Pourquoi y'a cool dans alcool ?"
             ]
         ];
