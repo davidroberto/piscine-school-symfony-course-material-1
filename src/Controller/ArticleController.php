@@ -21,15 +21,15 @@ class ArticleController
         $articles = [
           1 => [
               'title' => 'La canicule, il fait chaud',
-              'contenu' => 'je transpire'
+              'content' => 'je transpire'
           ],
           2 => [
               'title' => 'Fin des moteurs thermiques en 2035',
-              'contenu' => 'BROUM'
+              'content' => 'BROUM'
           ],
           3 => [
               'title' => "L'alcool c'est pas cool",
-              'contenu' => "Pourquoi y'a cool dans alcool ?"
+              'content' => "Pourquoi y'a cool dans alcool ?"
           ]
         ];
 
@@ -42,12 +42,49 @@ class ArticleController
 //            $titles .= " | " . $articles[$id]['title'];
 //        }
 //        return new Response($titles);
-        
+
         // trouver dans la liste des articles l'article qui correspond à l'id récupéré
         $article = $articles[$id];
 
         // afficher son titre en réponse
         return new Response($article['title']);
+    }
+
+
+
+    /**
+     * @Route("/article/{id}", name="article_show_wildcard")
+     * si je veux avoir une url plus "propre" je peux utiliser, au lieu d'un query parameter id,
+     * une wildcard dans l'url
+     * pour ça je créé mon url en précisant que l'id est variable en le passant entre accolades
+     */
+    // je demande à Symfony de récupérer la valeur de l'id en passant en parametre de la méthode
+    // une variable qui a le même nom que la wildcard
+    public function showArticleWildcard($id)
+    {
+
+        // fake requête SQL "SELECT * FROM article";
+        $articles = [
+            1 => [
+                'title' => 'La canicule, il fait chaud',
+                'content' => 'je transpire'
+            ],
+            2 => [
+                'title' => 'Fin des moteurs thermiques en 2035',
+                'content' => 'BROUM'
+            ],
+            3 => [
+                'title' => "L'alcool c'est pas cool",
+                'content' => "Pourquoi y'a cool dans alcool ?"
+            ]
+        ];
+
+        // trouver dans la liste des articles l'article qui correspond à l'id récupéré
+        $article = $articles[$id];
+
+        // afficher son titre en réponse
+        return new Response($article['title']);
+
     }
 
 }
