@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PokerController
 {
-    
+
     /**
      * @Route("/poker", name="poker")
      */
@@ -23,16 +23,26 @@ class PokerController
         // j'utilise l'objet Request et la propriété query
         // pour récupérer le parametre GET d'âge
         // je le stocke dans une variable
+
         $age = $request->query->get('age');
+
+        if ($request->query->has('name')) {
+            $message = "Bienvenue ".$request->query->get('name')." sur le site de Poker";
+        } else {
+            $message = "Bienvenue inconnu sur le site de Poker";
+        }
 
         // si l'âge est supérieur ou égal à 18, j'accepte l'utilisateur
         if ($age >= 18) {
-            return new Response("Bienvenue sur le site de Poker");
+            return new Response($message);
         // sinon je lui mets une message de refus
         } else {
             return new Response("Dégage morveux");
         }
 
     }
+
+
+    
 
 }
