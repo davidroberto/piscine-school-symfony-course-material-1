@@ -2,12 +2,19 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 // je créé une classe avec le même nom que le fichier
 // suffixée par controller
-class PageController
+
+// Je fais hériter PokerController de la classe de Symfony AbstractController
+// De cette manière, ma classe PokerController peut utiliser "toutes" les méthodes
+// définies dans la classe AbstractController
+// AbstractController fournit plusieurs méthodes pour faciliter la création de fonctionnalités
+// dans nos contrôleurs (comme des redirections, la création de formulaires etc)
+class PageController extends AbstractController
 {
 
     /**
@@ -33,6 +40,14 @@ class PageController
     public function contact()
     {
         return new Response('contact');
+    }
+
+    /**
+     * @Route("/digimons", name="digimons")
+     */
+    public function digimons()
+    {
+        return new Response('petit chat mignon qui se transforme en frigo avec des lance missiles');
     }
 
 }

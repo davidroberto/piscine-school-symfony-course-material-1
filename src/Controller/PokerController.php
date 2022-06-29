@@ -4,11 +4,17 @@
 namespace App\Controller;
 
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PokerController
+// Je fais hériter PokerController de la classe de Symfony AbstractController
+// De cette manière, ma classe PokerController peut utiliser "toutes" les méthodes
+// définies dans la classe AbstractController
+// AbstractController fournit plusieurs méthodes pour faciliter la création de fonctionnalités
+// dans nos contrôleurs (comme des redirections, la création de formulaires etc)
+class PokerController extends AbstractController
 {
 
     /**
@@ -37,7 +43,7 @@ class PokerController
             return new Response($message);
         // sinon je lui mets une message de refus
         } else {
-            return new Response("Dégage morveux");
+            return $this->redirectToRoute("digimons");
         }
 
     }

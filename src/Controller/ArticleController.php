@@ -4,11 +4,17 @@
 namespace App\Controller;
 // src/Controller
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticleController
+// Je fais hériter PokerController de la classe de Symfony AbstractController
+// De cette manière, ma classe PokerController peut utiliser "toutes" les méthodes
+// définies dans la classe AbstractController
+// AbstractController fournit plusieurs méthodes pour faciliter la création de fonctionnalités
+// dans nos contrôleurs (comme des redirections, la création de formulaires etc)
+class ArticleController extends AbstractController
 {
 
     /**
@@ -52,7 +58,7 @@ class ArticleController
 
     // pour débuguer ses routes en utilisant la ligne de commandes :
     // se placer dans le projet en ligne de commandes
-    //  et taper "php bin/console debug:router"
+    // et taper "php bin/console debug:router"
 
     /**
      * @Route("/article/{id}", name="article_show_wildcard")
@@ -86,7 +92,6 @@ class ArticleController
 
         // afficher son titre en réponse
         return new Response($article['title']);
-
     }
 
 }
