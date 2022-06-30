@@ -17,27 +17,32 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends AbstractController
 {
 
+    // on définit une propriété $articles (une sorte de variable de classe)
+    // pour éviter d'avoir à dupliquer la liste d'articles dans toutes les
+    // méthodes
+    //
+    // "private" permet de dire qu'on ne peut utiliser cette propriété que dans notre classe ArticleController
+    // "public" permettrait à d'autres classes d'utiliser cette propriété
+    public $articles = [
+        1 => [
+            'title' => 'La canicule, il fait chaud',
+            'content' => 'je transpire'
+        ],
+        2 => [
+            'title' => 'Fin des moteurs thermiques en 2035',
+            'content' => 'BROUM'
+        ],
+        3 => [
+            'title' => "L'alcool c'est pas cool",
+            'content' => "Pourquoi y'a cool dans alcool ?"
+        ]
+    ];
+
     /**
      * @Route("/article", name="article_show")
      */
     public function showArticle(Request $request)
     {
-
-        // fake requête SQL "SELECT * FROM article";
-        $articles = [
-          1 => [
-              'title' => 'La canicule, il fait chaud',
-              'content' => 'je transpire'
-          ],
-          2 => [
-              'title' => 'Fin des moteurs thermiques en 2035',
-              'content' => 'BROUM'
-          ],
-          3 => [
-              'title' => "L'alcool c'est pas cool",
-              'content' => "Pourquoi y'a cool dans alcool ?"
-          ]
-        ];
 
         // récupérer l'id dans l'url (parametre GET)
         $id = $request->query->get('id');
@@ -50,7 +55,7 @@ class ArticleController extends AbstractController
 //        return new Response($titles);
 
         // trouver dans la liste des articles l'article qui correspond à l'id récupéré
-        $article = $articles[$id];
+        $article = $this->articles[$id];
 
         // afficher son titre en réponse
         return new Response($article['title']);
@@ -71,24 +76,8 @@ class ArticleController extends AbstractController
     public function showArticleWildcard($id)
     {
 
-        // fake requête SQL "SELECT * FROM article";
-        $articles = [
-            1 => [
-                'title' => 'La canicule, il fait chaud',
-                'content' => 'je transpire'
-            ],
-            2 => [
-                'title' => 'Fin des moteurs thermiques en 2035',
-                'content' => 'BROUM'
-            ],
-            3 => [
-                'title' => "L'alcool c'est pas cool ?!",
-                'content' => "Pourquoi y'a cool dans alcool ?"
-            ]
-        ];
-
         // trouver dans la liste des articles l'article qui correspond à l'id récupéré
-        $article = $articles[$id];
+        $article = $this->articles[$id];
 
         // afficher son titre en réponse
         return new Response($article['title']);
