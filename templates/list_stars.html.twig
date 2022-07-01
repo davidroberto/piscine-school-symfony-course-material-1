@@ -1,7 +1,28 @@
 {% include '_header.html.twig' %}
 
 {% for star in stars %}
-    {% include '_article.html.twig' %}
+    {% if star.published %}
+        <article style="background-color: {{ star.color }};" >
+            <h1>{{ star.title }}</h1>
+            <p>{{ star.publishedDate | date('d-m-y')}}</p>
+            {#
+                je veux générer une url vers la page d'affichage d'une star
+                j'évite de mettre l'url en dur, sinon l'url ne marchera
+                sur les environements autres que le mien (autres dev, serveur de prod etc)
+                Pour calculer l'url en fonction de l'environnement, j'utilise la
+                fonction path de twig et je lui passe juste le nom de la route.
+
+                Le problème de cette route (star) c'est qu'elle n'est pas statique. On est
+                obligé de lui passer un id, pour identifier la star à afficher.
+                Donc en deuxième parametre, on lui passe l'id à utiliser dans la route,
+                ici l'id de la star.
+            #}
+            <a href={{ path('star', {'id': star.id }) }}>Voir le détail de la star</a>
+        </article>
+    {% else %}
+        <p>Cette star n'est pas publié</p>
+    {% endif %}
+
 {% endfor %}
 
 {% include '_footer.html.twig' %}
