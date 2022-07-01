@@ -3,7 +3,6 @@
 <article style="background-color: {{ star.color }};" >
     <h1>{{ star.title }}</h1>
     <p>{{ star.publishedDate | date('d-m-y')}}</p>
-    <a href={{ 'http://poker-site-piscine:8888/star/' ~ star.id }}>Voir le détail de la star</a>
 </article>
 
 {% include '_footer.html.twig' %}

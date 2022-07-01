@@ -31,7 +31,7 @@ class PageController extends AbstractController
         // (du composant http foundation de Symfony)
         // Ca affichera donc 'hello accueil' quand
         // l'url "/" sera demandée
-        return new Response('Hello Accueil');
+        return $this->render('home.html.twig');
     }
 
 }
