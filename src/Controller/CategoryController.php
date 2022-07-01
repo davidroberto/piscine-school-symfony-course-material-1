@@ -3,33 +3,109 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
 {
 
     /**
-     * @Route("/category", name="category")
+     * @Route("/stars", name="stars")
      */
-    public function showCategory()
+    public function listStars()
     {
-        $name = 'David';
 
-//        $category = [
-//            'title' => 'Politique',
-//            'color' => 'yellow',
-//            'published' => true,
-//            'description' => 'Decrypter l\'actualité politique avec le prisme de David Robert'
-//        ];
+        $stars = [
+            1 => [
+                'title' => 'Tex',
+                'color' => 'red',
+                'published' => false,
+                'image' => 'https://resize.programme-television.ladmedia.fr/r/670,670/img/var/premiere/storage/images/tele-7-jours/news-tv/video-les-z-amours-france-2-tex-craque-sa-chemise-devant-les-candidats-4344637/77880010-1-fre-FR/VIDEO-Les-Z-amours-France-2-Tex-craque-sa-chemise-devant-les-candidats.jpg',
+                'publishedDate' => new \DateTime('NOW')
+            ],
+            2 => [
+                'title' => 'Cyril Hanouna',
+                'color' => 'yellow',
+                'published' => true,
+                'image' => 'https://media.onvoitout.fr/2021/10/cyril-hanouna-tpmp-stresse-tres-inquiet-pour-les-yeux-de-benjamin-castaldi-il-dit-tout-50.jpg',
+                'publishedDate' => new \DateTime('NOW')
+            ],
+            3 => [
+                'title' => 'Afida Turner',
+                'color' => 'black',
+                'published' => true,
+                'image' => 'https://s.yimg.com/uu/api/res/1.2/SXrg2uonJIrD9JlemslJWQ--~B/aD01Njg7dz0xMDI0O2FwcGlkPXl0YWNoeW9u/http://media.zenfs.com/fr_FR/News/TeleLoisirs/96851-afida-turner-atteinte-de-deux-tumeurs-elle-sera-bientot-hospitalisee.jpeg',
+                'publishedDate' => new \DateTime('NOW')
+            ],
+            4 => [
+                'title' => 'Manuel Valls',
+                'color' => 'blue',
+                'published' => false,
+                'image' => 'https://images.bfmtv.com/vypLwZsN4IyBgQiA4BpWRJgRrpg=/4x3:1252x705/1248x0/images/-80516.jpg',
+                'publishedDate' => new \DateTime('NOW')
+            ],
+            5 => [
+                'title' => 'JCVD',
+                'color' => 'blue',
+                'published' => false,
+                'image' => 'https://www.programme.tv/imgre/fit/~1~tel~2021~07~12~6801abcb-554d-4a8b-8667-d05cb7f88734.png/1160x500/crop-from/top/quality/80/focus-point/1783,871/jean-claude-van-damme-devoile-les-causes-de-ses-problemes-de-drogue.jpg',
+                'publishedDate' => new \DateTime('NOW')
+            ]
+        ];
 
-        // récupére le fichier twig
-        // le transforme "le compile" en HTML
-        // créé une instance de la classe Response
-        // et la retourne au navigateur
+        return $this->render('list_stars.html.twig', [
+            'stars' => $stars
+        ]);
 
-        return $this->render('show_category.html.twig', [
-            'name' => $name
+
+    }
+
+    /**
+     * @Route("/star/{id}", name="star")
+     */
+    public function showCategory($id)
+    {
+
+
+        $stars = [
+            1 => [
+                'title' => 'Tex',
+                'color' => 'red',
+                'published' => false,
+                'image' => 'https://resize.programme-television.ladmedia.fr/r/670,670/img/var/premiere/storage/images/tele-7-jours/news-tv/video-les-z-amours-france-2-tex-craque-sa-chemise-devant-les-candidats-4344637/77880010-1-fre-FR/VIDEO-Les-Z-amours-France-2-Tex-craque-sa-chemise-devant-les-candidats.jpg',
+                'publishedDate' => new \DateTime('NOW')
+            ],
+            2 => [
+                'title' => 'Cyril Hanouna',
+                'color' => 'yellow',
+                'published' => true,
+                'image' => 'https://media.onvoitout.fr/2021/10/cyril-hanouna-tpmp-stresse-tres-inquiet-pour-les-yeux-de-benjamin-castaldi-il-dit-tout-50.jpg',
+                'publishedDate' => new \DateTime('NOW')
+            ],
+            3 => [
+                'title' => 'Afida Turner',
+                'color' => 'black',
+                'published' => true,
+                'image' => 'https://s.yimg.com/uu/api/res/1.2/SXrg2uonJIrD9JlemslJWQ--~B/aD01Njg7dz0xMDI0O2FwcGlkPXl0YWNoeW9u/http://media.zenfs.com/fr_FR/News/TeleLoisirs/96851-afida-turner-atteinte-de-deux-tumeurs-elle-sera-bientot-hospitalisee.jpeg',
+                'publishedDate' => new \DateTime('NOW')
+            ],
+            4 => [
+                'title' => 'Manuel Valls',
+                'color' => 'blue',
+                'published' => false,
+                'image' => 'https://images.bfmtv.com/vypLwZsN4IyBgQiA4BpWRJgRrpg=/4x3:1252x705/1248x0/images/-80516.jpg',
+                'publishedDate' => new \DateTime('NOW')
+            ],
+            5 => [
+                'title' => 'JCVD',
+                'color' => 'blue',
+                'published' => false,
+                'image' => 'https://www.programme.tv/imgre/fit/~1~tel~2021~07~12~6801abcb-554d-4a8b-8667-d05cb7f88734.png/1160x500/crop-from/top/quality/80/focus-point/1783,871/jean-claude-van-damme-devoile-les-causes-de-ses-problemes-de-drogue.jpg',
+                'publishedDate' => new \DateTime('NOW')
+            ]
+        ];
+
+        return $this->render('show_star.html.twig', [
+            'star' => $stars[$id]
         ]);
     }
 
