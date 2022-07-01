@@ -34,20 +34,4 @@ class PageController extends AbstractController
         return new Response('Hello Accueil');
     }
 
-    /**
-     * @Route("/contact", name="contact")
-     */
-    public function contact()
-    {
-        return new Response('contact');
-    }
-
-    /**
-     * @Route("/digimons", name="digimons")
-     */
-    public function digimons()
-    {
-        return new Response('petit chat mignon qui se transforme en frigo avec des lance missiles');
-    }
-
 }

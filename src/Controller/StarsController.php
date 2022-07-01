@@ -5,15 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CategoryController extends AbstractController
+class StarsController extends AbstractController
 {
 
     /**
      * @Route("/stars", name="stars")
      */
-    public function listStars()
+    public function stars()
     {
-
         $stars = [
             1 => [
                 'title' => 'Tex',
@@ -57,7 +56,7 @@ class CategoryController extends AbstractController
             ]
         ];
 
-        return $this->render('list_stars.html.twig', [
+        return $this->render('stars.html.twig', [
             'stars' => $stars
         ]);
 
@@ -67,9 +66,8 @@ class CategoryController extends AbstractController
     /**
      * @Route("/stars/{id}", name="star")
      */
-    public function showCategory($id)
+    public function star($id)
     {
-
         $stars = [
             1 => [
                 'title' => 'Tex',
@@ -113,7 +111,7 @@ class CategoryController extends AbstractController
             ]
         ];
 
-        return $this->render('show_star.html.twig', [
+        return $this->render('star.html.twig', [
             'star' => $stars[$id]
         ]);
     }
